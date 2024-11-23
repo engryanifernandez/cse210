@@ -1,58 +1,64 @@
 using System;
-using System.Net.Quic;
-using System.IO;
+
+namespace Develop02;
 
 class Program
 {
     static void Main(string[] args)
     {
-        // Added additional Menu class for the displayed menu
-        Journal myJournal = new Journal();
-        int selection;
+        Journal journal = new Journal();
+        bool isRunning = true;
+        Console.WriteLine("Welcome to the Journal Program!");
 
-        do
+        while (isRunning)
         {
-            Menu menu = new Menu();
-            menu.DisplayMenu();
-            selection = menu.GetMenuChoice();
+            DisplayMenu();
+            Console.WriteLine("\nWhat would you like to do? ");
+            string userAnswerChoice = Console.ReadLine();
 
-            if (selection == 1)
+
+            switch (userAnswerChoice)
             {
-                DateTime theCurrentTime = DateTime.Now;
-                string dateText = theCurrentTime.ToShortDateString();
+                case "1":
+                    journal.AddEntry();
+                    break;
 
-                PromptGenerator prompts = new PromptGenerator();
-                string prompt = prompts.GetRandomPrompt();
-                Console.Write($"{prompt}\n> ");
+                case "2":
+                    journal.DisplayAll();
+                    break;
 
-                Entry newEntry = new Entry
-                {
-                    _date = dateText,
-                    _promptText = prompt,
-                    _entryText = Console.ReadLine()
-                };
+                case "3":
+                    journal.LoadFromFile();
+                    break;
 
-                myJournal.AddEntry(newEntry);
+                case "4":
+                    journal.SaveToFile();
+                    break;
 
-            } else if (selection == 2)
-            {
-                myJournal.DisplayAll();  
+                case "5":
+                    journal.SearchEntries();
+                    break;
 
-            } else if (selection == 3)
-            {
-                string fileName = "journal.txt";
-                myJournal.LoadFromFile(fileName);
+                case "6":
+                    Console.WriteLine("The program has ended. Thank you for using the Journal Program!");
+                    isRunning = !isRunning;
+                    break;
 
-            } else if (selection == 4)
-            {
-                string fileName = "journal.txt";
-                myJournal.SaveToFile(fileName);
-
-            } else
-            {
-                menu.Quit();
+                default:
+                    Console.WriteLine("Incorrect input! Please try again.");
+                    break;
             }
         }
-        while (selection != 5);        
+    }
+
+    private static void DisplayMenu()
+    {
+        Console.WriteLine("\nPlease select one of the following choices:\n" +
+                  "1. Write\n" +
+                  "2. Display\n" +
+                  "3. Load\n" +
+                  "4. Save\n" +
+                  "5. Search\n" +
+                  "6. Quit");
     }
 }
