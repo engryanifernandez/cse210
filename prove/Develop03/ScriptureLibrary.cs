@@ -1,7 +1,5 @@
 /*This is made by Hazel Diane Fernandez
-
 - **ScriptureLibrary**: Handles the storage and retrieval of scriptures.
-
 */
 
 using System.Collections.Generic;
@@ -32,11 +30,10 @@ public class ScriptureLibrary
         if (_scriptures.Count == 0)
         {
             Console.WriteLine("The scripture library is empty.");
-            return new Scripture(new Reference("Error", 0, 0), "No scriptures available", _generator);
+            return null;
         }
         return _scriptures[_generator.Next(0, _scriptures.Count)];
     }
-
 
     public void LoadFromFile(string filePath)
     {
@@ -53,5 +50,4 @@ public class ScriptureLibrary
             }
         }
     }
-
 }

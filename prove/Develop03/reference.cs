@@ -1,7 +1,5 @@
 /*This is made by Hazel Diane Fernandez
-
 - **Reference**: Represents the reference (book, chapter, verse) of the scripture.
-
 */
 
 namespace Develop03;
@@ -30,5 +28,4 @@ public class Reference
     }
     return $"{_book} {_chapter}:{_verse}";
   }
-
 }

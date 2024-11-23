@@ -1,7 +1,5 @@
 /*This is made by Hazel Diane Fernandez
-
 - **Word**: Represents an individual word in the scripture and manages its visibility (hidden or shown).
-
 */
 
 using System.Text;
@@ -52,5 +50,4 @@ public class Word
         // Returns the first numCharacters characters of the word as a hint
         return _originalWord.Substring(0, numCharacters);
     }
-
 }

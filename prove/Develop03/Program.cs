@@ -36,12 +36,6 @@ Program Flow:
 4. The game continues as long as there are hidden words, with the user given the opportunity to either guess or ask for a hint.
 5. The game ends when all hidden words are guessed correctly.
 
-Classes and Methods:
-- **ScriptureLibrary**: Handles the storage and retrieval of scriptures.
-- **Scripture**: Contains the logic for displaying, hiding, and revealing words in the scripture, as well as managing user input and game progress.
-- **Word**: Represents an individual word in the scripture and manages its visibility (hidden or shown).
-- **Reference**: Represents the reference (book, chapter, verse) of the scripture.
-
 */
 
 using System.Collections.Specialized;
@@ -52,7 +46,6 @@ static class Program
 {
     static void Main(string[] args)
     {
-
         ScriptureLibrary library = new ScriptureLibrary();
         Scripture scripture = library.GetRandomScripture();
 
@@ -70,26 +63,26 @@ static class Program
                 while (retryInput != "show" && retryInput != "guess")
                 {
                     Console.WriteLine("Invalid input! Please enter 'show' to display the scripture again or 'guess' to start guessing.");
-                    retryInput = Console.ReadLine()?.ToLower();  // Prompt again for correct input
+                    retryInput = Console.ReadLine()?.ToLower();  
                 }
 
                 if (retryInput == "show")
                 {
-                    scripture.Reset();  // Reset the scripture, making all words visible
-                                        // Display the full scripture again
+                    scripture.Reset();  
+                                        
                     Console.Clear();
                     Console.WriteLine(scripture.DisplayScripture());
 
                     // Hide some words again
-                    scripture.HideRandomWords();  // Hide random words immediately after showing
+                    scripture.HideRandomWords();  
                     Console.WriteLine("\nPress Enter to continue...");
                     Console.ReadLine();
 
-                    continue;  // Continue the loop to re-hide words after showing
+                    continue;  
                 }
                 else if (retryInput == "guess")
                 {
-                    break; // Break to the guessing section
+                    break; 
                 }
             }
 
@@ -145,10 +138,8 @@ static class Program
                 continue;
             }
 
-     
         }
 
-        // Game is over, display final message
         Console.WriteLine("Game Over!");
         Console.WriteLine("Congratulations! You've guessed all the words!");
     }

@@ -1,7 +1,5 @@
 /*This is made by Hazel Diane Fernandez
-
 - **Scripture**: Contains the logic for displaying, hiding, and revealing words in the scripture, as well as managing user input and game progress.
-
 */
 
 namespace Develop03;
@@ -35,7 +33,6 @@ public class Scripture
         for (int i = 0; i < amount; i++)
         {
             {
-
                 if (amount > _availableWords.Count)
                 {
                     amount = _availableWords.Count;
@@ -50,7 +47,6 @@ public class Scripture
     }
 
     public bool IsCompletelyHidden() => _words.All(word => word.IsHidden());
-
 
     public string DisplayScripture()
     {
@@ -85,7 +81,6 @@ public class Scripture
         }
         return "No hints available!";
     }
-
     public bool CheckGuess(string guess)
     {
         // Trim the input and make it lowercase to avoid issues with extra spaces and case differences
@@ -116,6 +111,5 @@ public class Scripture
     {
         return _words.All(word => !word.IsHidden()); // Check if no word is hidden
     }
-
 
 }
