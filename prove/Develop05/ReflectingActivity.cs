@@ -1,3 +1,7 @@
+/* 
+This C# Program Code is made by Hazel Diane Fernandez for W05 Prove: Developer—Mindfulness
+*/
+
 using System;
 using System.Threading;
 
@@ -40,16 +44,16 @@ public class ReflectingActivity : Activity
             Thread.Sleep(1000);
             Console.Write("\b \b");
         }
-        
+
         if (input.Key == ConsoleKey.Enter)
         {
             DateTime endTime = DateTime.Now.AddSeconds(seconds);
-            
+
             while (DateTime.Now < endTime)
             {
                 Console.Clear();
                 DisplayQuestion();
-                
+
                 for (int i = 5; i > 0; i--)
                 {
                     Console.Write(i);

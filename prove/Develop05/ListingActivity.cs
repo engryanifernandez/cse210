@@ -1,12 +1,14 @@
+/* 
+This C# Program Code is made by Hazel Diane Fernandez for W05 Prove: Developer—Mindfulness
+*/
+
 using System;
 using System.Collections.Generic;
 using System.Threading;
 
 namespace Develop05;
 
-public class ListingActivity(int activityDuration) : Activity("Listing",
-    "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.",
-    activityDuration)
+public class ListingActivity : Activity
 {
     private string[] _prompts = {
         " --- Who are people that you appreciate? --- ",
@@ -15,6 +17,13 @@ public class ListingActivity(int activityDuration) : Activity("Listing",
         " --- When have you felt the Holy Ghost this month? --- ",
         " --- Who are some of your personal heroes? --- "
     };
+
+    public ListingActivity(int activityDuration)
+        : base("Listing",
+               "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.",
+               activityDuration)
+    {
+    }
 
     public override void Run(int time)
     {
@@ -26,11 +35,16 @@ public class ListingActivity(int activityDuration) : Activity("Listing",
             Thread.Sleep(1000);
             Console.Write("\b \b");
         }
+
         DateTime endTime = DateTime.Now.AddSeconds(time);
+        int count = 0;
+
         while (DateTime.Now < endTime)
         {
-            GetListFromUser();
+            count += GetListFromUser();
         }
+
+        Console.WriteLine($"\nYou listed {count} items during this session.");
     }
 
     private string GetRandomPrompt()
@@ -40,15 +54,20 @@ public class ListingActivity(int activityDuration) : Activity("Listing",
         return _prompts[randomIndex];
     }
 
-    public List<string> GetListFromUser()
+    public int GetListFromUser()
     {
         List<string> items = new List<string>();
         Console.Write("\n> ");
         string userInput;
         userInput = Console.ReadLine();
-        items.Add(userInput);
 
-        return items;
+        if (!string.IsNullOrEmpty(userInput))
+        {
+            items.Add(userInput);
+            return 1;
+        }
+
+        return 0;
     }
 
     private void DisplayPrompt()

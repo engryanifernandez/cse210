@@ -1,3 +1,7 @@
+/* 
+This C# Program Code is made by Hazel Diane Fernandez for W05 Prove: Developer—Mindfulness
+*/
+
 using System;
 using System.Threading;
 

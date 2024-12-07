@@ -1,3 +1,7 @@
+/* 
+This C# Program Code is made by Hazel Diane Fernandez for W05 Prove: Developer—Mindfulness
+*/
+
 using System;
 using System.Threading;
 
@@ -15,8 +19,9 @@ static class Program
             Console.Write("Select a choice from the menu: ");
 
             string userChoice = Console.ReadLine();
-            
-            switch (userChoice) {
+
+            switch (userChoice)
+            {
                 case "1":
                     Activity breathing = new BreathingActivity(0);
                     ExecuteActivity(breathing);
@@ -47,7 +52,7 @@ static class Program
 
     private static void ExecuteActivity(Activity activity)
     {
-      
+
         activity.StartActivity();
         int seconds = activity.GetActivityDuration();
         activity.Loading();
