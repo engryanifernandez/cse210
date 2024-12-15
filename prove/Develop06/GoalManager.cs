@@ -1,3 +1,7 @@
+/* 
+This C# Program Code is made by Hazel Diane Fernandez for W06 Prove: Developer—Eternal Quest
+*/
+
 public class GoalManager
 {
     private List<Goal> _goals = new List<Goal>();
@@ -67,7 +71,7 @@ public class GoalManager
 
     private void DefineLevelingDetails()
     {
-        // Fixed settings, no need to ask the user for input
+        // Fixed settings
         Console.WriteLine("Level up/down system is set:");
         Console.WriteLine($"- Points per level: {_pointsPerLevel}");
         Console.WriteLine($"- Bonus for leveling up: {_bonusPointsForLevelUp}");
@@ -97,9 +101,6 @@ public class GoalManager
             Console.WriteLine($"Penalty of {_penaltyPointsForLevelDown} points deducted!");
         }
     }
-
-
-
 
     private int GetValidMenuChoice()
     {
@@ -260,7 +261,7 @@ public class GoalManager
         else
         {
             // Add score if goal is not negative
-            _score += int.Parse(selectedGoal.GetPoints());  // Assuming points are stored as a string, adjust accordingly
+            _score += int.Parse(selectedGoal.GetPoints());  
         }
 
         // Update level immediately after the score is changed

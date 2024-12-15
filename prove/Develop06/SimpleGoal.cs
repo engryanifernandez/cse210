@@ -1,3 +1,7 @@
+/* 
+This C# Program Code is made by Hazel Diane Fernandez for W06 Prove: Developer—Eternal Quest
+*/
+
 public class SimpleGoal : Goal
 {
     private bool _isComplete;
